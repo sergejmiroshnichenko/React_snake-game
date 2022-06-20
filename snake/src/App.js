@@ -1,12 +1,119 @@
 import './App.css';
+import React, {useEffect, useState} from 'react';
+import Snake from "./Snake";
+import Food from './Food'
 
 
 const App = () => {
-  return (
-    <div className="App">
 
-    </div>
-  );
+    const SPEED = 300;
+    const WIDTH = 393;
+    const HEIGHT = 393;
+    const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'Enter'];
+
+
+    const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
+    const [food, setFood] = useState([0,8]);
+    const [movement, setMovement] = useState(AVAILABLE_MOVES[0]);
+
+
+    const getRandomCoordinates = () => {
+
+        let x = null;
+        let y = null;
+        do{
+            let min = 1;
+            let max = 75;
+            x = Math.floor((Math.random() * (max - min + 1) + min) / 4) * 4;
+            y = Math.floor((Math.random() * (max - min + 1) + min) / 4) * 4;
+        } while (snakeDots.some(elem => elem[0] === [x,y] && elem[1] === [x,y]));
+        setFood([x, y]);
+    }
+
+    useEffect(() => {
+        const interval = snakeMove();
+        return () => clearInterval(interval);
+    }, [snakeDots]);
+
+    const snakeMove = () => {
+        const timerId = setTimeout(() => {
+            const newSnake = [...snakeDots];
+            let move = [];
+
+            switch (movement) {
+                case AVAILABLE_MOVES[0]:
+                    move = [4, 0];
+                    break;
+                case AVAILABLE_MOVES[1]:
+                    move = [-4, 0];
+                    break;
+                case AVAILABLE_MOVES[2]:
+                    move = [0, -4];
+                    break;
+                case AVAILABLE_MOVES[3]:
+                    move = [0, 4];
+                    break;
+                case AVAILABLE_MOVES[4]:
+                    return movement ? movement : !movement;
+            }
+
+            const head = [
+                checkBorder(newSnake[newSnake.length - 1][0] + move[0]),
+                checkBorder(newSnake[newSnake.length - 1][1] + move[1])
+            ];
+
+            newSnake.push(head);
+            let connectIndex = 1;
+            if(head[0] === food[0] && head[1] === food[1]){
+                connectIndex = 0;
+                getRandomCoordinates();
+            }
+
+            snakeDots.forEach((dot) => {
+                if(head[0] === dot[0] && head[1] === dot[1]){
+                    return alert('Game over')
+                }
+            })
+
+            setSnakeDots(newSnake.slice(connectIndex));
+        }, SPEED)
+        return timerId;
+    }
+
+    const checkBorder = position => {
+        switch (true) {
+            case position >= WIDTH / 4 :
+                return 0;
+            case position < 0 :
+                return (WIDTH / 4) - 2;
+            default:
+                return position;
+        }
+    }
+
+    const handleKeyDown = (event) => {
+        console.log(event.key)
+        const index = AVAILABLE_MOVES.indexOf(event.key);
+        if (index > -1) {
+            setMovement(AVAILABLE_MOVES[index]);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+    }, []);
+
+
+    return (
+        <>
+             Score : {snakeDots.length}
+            <div className="game-area" style={{width: `${WIDTH}px`, height: `${HEIGHT}px`}}>
+                <Snake snakeDots={snakeDots}/>
+                <Food food={food}/>
+            </div>
+        </>
+
+    );
 }
 
 export default App;
