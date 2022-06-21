@@ -6,7 +6,7 @@ import Food from './Food'
 
 const App = () => {
 
-    const SPEED = 300;
+    const SPEED = 500;
     const WIDTH = 393;
     const HEIGHT = 393;
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'Enter'];
@@ -15,15 +15,16 @@ const App = () => {
     const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
     const [food, setFood] = useState([0,8]);
     const [movement, setMovement] = useState(AVAILABLE_MOVES[0]);
+    const [isPaused, setIsPaused] = useState(false);
 
 
     const getRandomCoordinates = () => {
 
-        let x = null;
-        let y = null;
+        let x ;
+        let y ;
         do{
             let min = 1;
-            let max = 75;
+            let max = 93;
             x = Math.floor((Math.random() * (max - min + 1) + min) / 4) * 4;
             y = Math.floor((Math.random() * (max - min + 1) + min) / 4) * 4;
         } while (snakeDots.some(elem => elem[0] === [x,y] && elem[1] === [x,y]));
@@ -35,32 +36,49 @@ const App = () => {
         return () => clearInterval(interval);
     }, [snakeDots]);
 
+
     const snakeMove = () => {
+
         const timerId = setTimeout(() => {
+
+            const stopSnake = () => {
+                if(!isPaused){
+                    clearTimeout(timerId);
+                    setIsPaused(!isPaused)
+                }
+                else {
+                   setTimeout(() => {return movement},5000)
+                    setIsPaused(isPaused)
+                }
+            }
+
             const newSnake = [...snakeDots];
             let move = [];
 
-            switch (movement) {
-                case AVAILABLE_MOVES[0]:
-                    move = [4, 0];
-                    break;
-                case AVAILABLE_MOVES[1]:
-                    move = [-4, 0];
-                    break;
-                case AVAILABLE_MOVES[2]:
-                    move = [0, -4];
-                    break;
-                case AVAILABLE_MOVES[3]:
-                    move = [0, 4];
-                    break;
-                case AVAILABLE_MOVES[4]:
-                    return movement ? movement : !movement;
-            }
+
+                switch (movement) {
+                    case AVAILABLE_MOVES[0]:
+                        move = [4, 0];
+                        break;
+                    case AVAILABLE_MOVES[1]:
+                        move = [-4, 0];
+                        break;
+                    case AVAILABLE_MOVES[2]:
+                        move = [0, -4];
+                        break;
+                    case AVAILABLE_MOVES[3]:
+                        move = [0, 4];
+                        break;
+                    case AVAILABLE_MOVES[4]:
+                        return stopSnake()
+                }
+
 
             const head = [
                 checkBorder(newSnake[newSnake.length - 1][0] + move[0]),
-                checkBorder(newSnake[newSnake.length - 1][1] + move[1])
+                checkBorder(newSnake[newSnake.length - 1][1] + move[1]),
             ];
+
 
             newSnake.push(head);
             let connectIndex = 1;
@@ -71,11 +89,14 @@ const App = () => {
 
             snakeDots.forEach((dot) => {
                 if(head[0] === dot[0] && head[1] === dot[1]){
-                    return alert('Game over')
+                     alert('Game over');
+                     setSnakeDots([[0, 0], [4, 0], [8, 0]]);
+                    console.log(snakeDots)
                 }
-            })
+            });
 
             setSnakeDots(newSnake.slice(connectIndex));
+
         }, SPEED)
         return timerId;
     }
@@ -92,7 +113,6 @@ const App = () => {
     }
 
     const handleKeyDown = (event) => {
-        console.log(event.key)
         const index = AVAILABLE_MOVES.indexOf(event.key);
         if (index > -1) {
             setMovement(AVAILABLE_MOVES[index]);
