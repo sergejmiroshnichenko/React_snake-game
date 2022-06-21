@@ -1,7 +1,7 @@
 
 .game-area{
   position: relative;
-  margin: 50px auto;
+  margin: 30px auto;
   border: 2px solid red;
 }
 
@@ -21,4 +21,21 @@
   height: 4%;
   background: red;
   border: 1px solid white;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  font-size: 17px;
+  font-family: 'Trispace', sans-serif;
+}
+
+.footer-github{
+  text-decoration: none;
+  margin:35px;
+}
+
+.footer-github:hover{
+  color: red
 }
