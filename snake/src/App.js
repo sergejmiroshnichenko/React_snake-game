@@ -126,7 +126,7 @@ const App = () => {
 
     return (
         <>
-             Score : {snakeDots.length}
+             <h1 style={{textAlign: 'center'}}>Score : {snakeDots.length}</h1>
             <div className="game-area" style={{width: `${WIDTH}px`, height: `${HEIGHT}px`}}>
                 <Snake snakeDots={snakeDots}/>
                 <Food food={food}/>
