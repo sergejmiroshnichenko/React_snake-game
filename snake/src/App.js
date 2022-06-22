@@ -49,7 +49,7 @@ const App = () => {
                 } else {
                     setTimeout(() => {
                         return movement
-                    }, 5000)
+                    }, 500)
                     setIsPaused(isPaused)
                 }
             }
