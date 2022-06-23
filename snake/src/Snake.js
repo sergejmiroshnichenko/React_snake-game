@@ -9,7 +9,6 @@ const Snake = ({snakeDots}) => {
                 const style = {
                     left : `${dot[0]}%`,
                     top : `${dot[1]}%`,
-                    // right : `${dot[8]}%`,
                 }
                 return (
                     <div className='snake-dot' style={style} key={index}></div>

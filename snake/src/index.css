@@ -17,26 +17,8 @@
 .snake-food{
   z-index: 1;
   position: absolute;
-  width: 4%;
-  height: 4%;
-  background: red;
-  box-shadow: 0 0 5px #730bd3;
-  animation: food 1s ease 0.2s infinite;
-}
-
-@keyframes food {
-  25%{
-    box-shadow: 0 0 10px blueviolet;
-  }
-  50%{
-    box-shadow: 0 0 5px blueviolet;
-  }
-  75%{
-    box-shadow: 0 0 10px blueviolet;
-  }
-  100%{
-    box-shadow: 0 0 5px blueviolet;
-  }
+  width: 6%;
+  height: 6%;
 }
 
 .footer{

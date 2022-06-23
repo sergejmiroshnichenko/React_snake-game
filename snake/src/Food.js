@@ -1,17 +1,25 @@
 import React from 'react';
 
 
-const Food = ({food}) => {
+const Food = ({ food, picture, imgRandom }) => {
 
-
+    // const incrementSnake = () => {
+    //
+    //     setSnakeDots((prev) => ({
+    //
+    //
+    //     }))
+    // }
 
     const style = {
-        left : `${food[0]}%`,
-        top : `${food[1]}%`
+        left: `${food[0]}%`,
+        top: `${food[1]}%`
     }
 
     return (
-        <div className='snake-food' style={style}></div>
+        <>
+            <img className="snake-food" style={style} src={ imgRandom(picture) } alt="Food" />
+        </>
     )
 }
 
