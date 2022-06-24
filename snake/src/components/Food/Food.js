@@ -3,14 +3,6 @@ import React from 'react';
 
 const Food = ({ food, picture, imgRandom }) => {
 
-    // const incrementSnake = () => {
-    //
-    //     setSnakeDots((prev) => ({
-    //
-    //
-    //     }))
-    // }
-
     const style = {
         left: `${food[0]}%`,
         top: `${food[1]}%`
