@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
 
-const Snake = ({ width, food, setFood, picture, imgRandom}) => {
+const Snake = ({ width, food, setFood, score }) => {
 
-    const SPEED = 500;
+    let SPEED = 500;
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
 
 
@@ -11,9 +11,6 @@ const Snake = ({ width, food, setFood, picture, imgRandom}) => {
     const [movement, setMovement] = useState(AVAILABLE_MOVES[0]);
     const [timerId, setTimerId] = useState(null);
     const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
-    const [score, setScore] = useState(0);
-
-
 
 
     const getRandomCoordinates = () => {
@@ -63,9 +60,7 @@ const Snake = ({ width, food, setFood, picture, imgRandom}) => {
         let connectIndex = 1;
         if (head[0] === food[0] && head[1] === food[1]) {
             connectIndex = 0;
-
             getRandomCoordinates();
-            imgRandom(picture)
         }
         setSnakeDots(newSnake.slice(connectIndex));
 
@@ -73,13 +68,14 @@ const Snake = ({ width, food, setFood, picture, imgRandom}) => {
         snakeDots.forEach((dot) => {
             if (head[0] === dot[0] && head[1] === dot[1]) {
                 alert('Game over');
+               return () => {window.location.reload()}
             }
         });
     }
 
     const snakeMove = () => {
 
-        const timerId = setTimeout(forTimer, SPEED)
+        const timerId = setTimeout(forTimer,  ( score > 4 ? SPEED = 200 : SPEED = 500 ));
 
         setTimerId(timerId);
     }
@@ -115,7 +111,7 @@ const Snake = ({ width, food, setFood, picture, imgRandom}) => {
                 }
                 return (
                     <>
-                        <div className='snake-dot' style={style} key={index}></div>
+                        <div className='snake-dot' style={style} key={index}> </div>
                     </>
 
                 )
