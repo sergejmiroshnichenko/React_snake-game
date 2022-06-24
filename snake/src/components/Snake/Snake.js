@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const Snake = ({ width, food, setFood, score }) => {
 
     let SPEED = 500;
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
-
 
 
     const [movement, setMovement] = useState(AVAILABLE_MOVES[0]);
@@ -110,10 +109,7 @@ const Snake = ({ width, food, setFood, score }) => {
                     top: `${dot[1]}%`,
                 }
                 return (
-                    <>
                         <div className='snake-dot' style={style} key={index}> </div>
-                    </>
-
                 )
             })}
         </div>
