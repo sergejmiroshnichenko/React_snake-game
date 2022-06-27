@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import Modal from '../../components/Modal/Modal'
 
 
-const Snake = ({ width, food, setFood, score }) => {
+const Snake = ({ width, food, setFood, score, setScore }) => {
 
     let SPEED = 500;
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
@@ -10,8 +11,18 @@ const Snake = ({ width, food, setFood, score }) => {
     const [movement, setMovement] = useState(AVAILABLE_MOVES[0]);
     const [timerId, setTimerId] = useState(null);
     const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
+    const [modal, setModal] = useState(false);
 
 
+    const openModal = () => {
+        setModal(true)
+    }
+
+    const closeModal = () => {
+        setModal(false)
+    }
+
+    
     const getRandomCoordinates = () => {
 
         let x;
@@ -66,8 +77,8 @@ const Snake = ({ width, food, setFood, score }) => {
 
         snakeDots.forEach((dot) => {
             if (head[0] === dot[0] && head[1] === dot[1]) {
-                alert('Game over');
-               return () => {window.location.reload()}
+                openModal()
+               // return () => {window.location.reload()}
             }
         });
     }
@@ -102,17 +113,19 @@ const Snake = ({ width, food, setFood, score }) => {
     }, []);
 
     return (
-        <div>
+        <>
+            {modal && <Modal  text={'Game over'} score={score} setScore={setScore} closeModal={closeModal} />}
             {snakeDots.map((dot, index) => {
                 const style = {
                     left: `${dot[0]}%`,
                     top: `${dot[1]}%`,
                 }
                 return (
+
                         <div className='snake-dot' style={style} key={index}> </div>
                 )
             })}
-        </div>
+        </>
     )
 }
 

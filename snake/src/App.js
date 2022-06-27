@@ -5,6 +5,7 @@ import Snake from "./components/Snake/Snake";
 import Food from './components/Food/Food';
 
 
+
 const App = () => {
 
     const [food, setFood] = useState([0, 8]);
@@ -31,7 +32,7 @@ const App = () => {
         <>
             <h1 style={{textAlign: 'center'}}>Score : { score }</h1>
             <div className="game-area" style={{width: `${WIDTH}px`, height: `${HEIGHT}px`}}>
-                <Snake width={WIDTH} food={food} setFood={setFood} score={score}/>
+                <Snake width={WIDTH} food={food} setFood={setFood} score={score} setScore={setScore}/>
                 <Food food={food} picture={picture} imgRandom={imgRandom}/>
             </div>
             <footer className='footer'>
