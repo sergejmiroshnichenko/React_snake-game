@@ -1,7 +1,7 @@
 
 .game-area{
   position: relative;
-  margin: 30px auto;
+  margin: 15px auto;
   border: 2px solid red;
 }
 
@@ -21,12 +21,42 @@
   height: 6%;
 }
 
+.movement{
+  margin: 0 auto;
+  width: 150px;
+}
+
+.stop{
+  margin-left: 25px;
+  background: red;
+  color: white;
+  border: 0;
+  width: 60px;
+  height: 35px;
+  border-radius: 140px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.start{
+  background: green;
+  color: white;
+  border: 0;
+  width: 60px;
+  height: 35px;
+  border-radius: 140px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
 .footer{
   display: flex;
   justify-content: center;
   align-items: baseline;
   font-size: 17px;
   font-family: 'Trispace', sans-serif;
+  margin-top: 30px;
+
 }
 
 .footer-github{

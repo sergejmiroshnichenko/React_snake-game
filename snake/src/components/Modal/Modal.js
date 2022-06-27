@@ -23,7 +23,7 @@ const Modal = ({ closeModal, text, score }) => {
                 </div>
 
                 <div className={styles.btnBlock}>
-                    <button onClick={() => closeModal()} className={styles.btnSuccess} type='button'> Yes</button>
+                    <button onClick={closeModal} className={styles.btnSuccess} type='button'> Yes</button>
                     <button className={styles.btnDanger} type='button' onClick={closeModal}> No </button>
                 </div>
             </div>

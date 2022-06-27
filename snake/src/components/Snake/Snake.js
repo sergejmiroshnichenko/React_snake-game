@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from '../../components/Modal/Modal'
 
 
-const Snake = ({ width, food, setFood, score, setScore }) => {
+const Snake = ({width, food, setFood, score}) => {
 
     let SPEED = 500;
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
@@ -12,6 +12,7 @@ const Snake = ({ width, food, setFood, score, setScore }) => {
     const [timerId, setTimerId] = useState(null);
     const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
     const [modal, setModal] = useState(false);
+    const [isPause, setIsPause] = useState(false);
 
 
     const openModal = () => {
@@ -22,7 +23,7 @@ const Snake = ({ width, food, setFood, score, setScore }) => {
         setModal(false)
     }
 
-    
+
     const getRandomCoordinates = () => {
 
         let x;
@@ -31,14 +32,10 @@ const Snake = ({ width, food, setFood, score, setScore }) => {
             let min = 1;
             let max = 98;
             x = Math.floor((Math.random() * (max - min + 2) + min) / 4) * 4;
-            y = Math.floor((Math.random() * (max - min +2) + min) / 4) * 4;
+            y = Math.floor((Math.random() * (max - min + 2) + min) / 4) * 4;
         } while (snakeDots.some(elem => elem[0] === [x, y] && elem[1] === [x, y]));
         setFood([x, y]);
     }
-
-    useEffect(() => {
-        snakeMove();
-    }, [snakeDots]);
 
     const forTimer = () => {
         const newSnake = [...snakeDots];
@@ -77,18 +74,42 @@ const Snake = ({ width, food, setFood, score, setScore }) => {
 
         snakeDots.forEach((dot) => {
             if (head[0] === dot[0] && head[1] === dot[1]) {
-                openModal()
-               // return () => {window.location.reload()}
+                openModal();
+                snakeStop()
+                // return () => {window.location.reload()}
             }
         });
     }
 
-    const snakeMove = () => {
+    // const snakeMove = () => {
+    //     const timerId = setTimeout(forTimer, (score > 4 ? SPEED = 200 : SPEED = 500));
+    //     setTimerId(timerId);
+    // }
 
-        const timerId = setTimeout(forTimer,  ( score > 4 ? SPEED = 200 : SPEED = 500 ));
 
+    useEffect(() => {
+        const timerId = setInterval(() => {
+                isPause && forTimer, (score > 4 ? SPEED = 200 : SPEED = 500);
+                return () => {
+                    clearInterval(timerId)
+                }
+            }
+        )
         setTimerId(timerId);
+
+    }, [isPause]);
+
+
+    // useEffect(() => {
+    //     !modal && snakeMove();
+    // }, [snakeDots]);
+
+
+    const snakeStop = () => {
+        // clearTimeout(timerId);
+        setIsPause(false)
     }
+
 
     const checkBorder = position => {
         switch (true) {
@@ -114,7 +135,7 @@ const Snake = ({ width, food, setFood, score, setScore }) => {
 
     return (
         <>
-            {modal && <Modal  text={'Game over'} score={score} setScore={setScore} closeModal={closeModal} />}
+            {modal && <Modal text={'Game over'} score={score} closeModal={closeModal}/>}
             {snakeDots.map((dot, index) => {
                 const style = {
                     left: `${dot[0]}%`,
@@ -122,7 +143,7 @@ const Snake = ({ width, food, setFood, score, setScore }) => {
                 }
                 return (
 
-                        <div className='snake-dot' style={style} key={index}> </div>
+                    <div className='snake-dot' style={style} key={index}></div>
                 )
             })}
         </>
