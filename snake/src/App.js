@@ -16,6 +16,7 @@ const App = () => {
         setScore(score + 1)
     }, [food]);
 
+
     const WIDTH = 400;
     const HEIGHT = 400;
     const apple = './image/apple.svg';
@@ -35,10 +36,7 @@ const App = () => {
                 <Snake width={WIDTH} food={food} setFood={setFood} score={score} setScore={setScore}/>
                 <Food food={food} picture={picture} imgRandom={imgRandom}/>
             </div>
-            <div className='movement'>
-                <button className='start'>START</button>
-                <button className='stop'>STOP</button>
-            </div>
+
             <footer className='footer'>
                 <p>© by Sergej Miroshnichenko</p>
                 <div style={{alignItems: 'baseline'}}><a className='footer-github' href="https://github.com/sergejmiroshnichenko?tab=repositories"><GITHUB/> Github </a></div>

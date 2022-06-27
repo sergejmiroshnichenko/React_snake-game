@@ -9,10 +9,10 @@ const Snake = ({width, food, setFood, score}) => {
 
 
     const [movement, setMovement] = useState(AVAILABLE_MOVES[0]);
-    const [timerId, setTimerId] = useState(null);
+    const [timerId, setTimerId] = useState(false);
     const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
     const [modal, setModal] = useState(false);
-    const [isPause, setIsPause] = useState(false);
+    const [pause, setPause] = useState(false);
 
 
     const openModal = () => {
@@ -87,27 +87,29 @@ const Snake = ({width, food, setFood, score}) => {
     // }
 
 
-    useEffect(() => {
-        const timerId = setInterval(() => {
-                isPause && forTimer, (score > 4 ? SPEED = 200 : SPEED = 500);
-                return () => {
-                    clearInterval(timerId)
-                }
-            }
-        )
-        setTimerId(timerId);
-
-    }, [isPause]);
-
-
     // useEffect(() => {
     //     !modal && snakeMove();
     // }, [snakeDots]);
 
 
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+           pause && forTimer (score > 4 ? SPEED = 200 : SPEED = 500);
+            setTimerId(timerId)
+        });
+
+        return () => {
+            clearTimeout(timerId);
+        };
+    }, [pause, snakeDots]);
+
+
     const snakeStop = () => {
-        // clearTimeout(timerId);
-        setIsPause(false)
+        setPause(false)
+    }
+
+    const snakeGame = () => {
+        setPause(true)
     }
 
 
@@ -146,6 +148,10 @@ const Snake = ({width, food, setFood, score}) => {
                     <div className='snake-dot' style={style} key={index}></div>
                 )
             })}
+            <div className='movement'>
+                <button className='start' onClick={snakeGame}>START</button>
+                <button className='stop' onClick={snakeStop}>STOP</button>
+            </div>
         </>
     )
 }
