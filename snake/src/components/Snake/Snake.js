@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Modal from '../../components/Modal/Modal'
 
 
-const Snake = ({width, food, setFood, score, setScore, start, toggleStart}) => {
+const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => {
 
     let SPEED = 500;
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
@@ -24,6 +24,22 @@ const Snake = ({width, food, setFood, score, setScore, start, toggleStart}) => {
             y = Math.floor((Math.random() * (max - min + 2) + min) / 4) * 4;
         } while (snakeDots.some(elem => elem[0] === [x, y] && elem[1] === [x, y]));
         setFood([x, y]);
+    }
+
+    const left = () => {
+        setMovement(AVAILABLE_MOVES[0])
+    }
+
+    const right = () => {
+        setMovement(AVAILABLE_MOVES[1])
+    }
+
+    const up = () => {
+        setMovement(AVAILABLE_MOVES[2])
+    }
+
+    const down = () => {
+        setMovement(AVAILABLE_MOVES[3])
     }
 
     const openModal = () => {
@@ -94,10 +110,10 @@ const Snake = ({width, food, setFood, score, setScore, start, toggleStart}) => {
 
     const checkBorder = position => {
         switch (true) {
-            case position >= width / 4:
+            case position >= size / 4:
                 return 0;
             case position < 0:
-                return width / 4 - 4;
+                return size / 4 - 4;
             default:
                 return position;
         }
@@ -124,10 +140,15 @@ const Snake = ({width, food, setFood, score, setScore, start, toggleStart}) => {
                     top: `${dot[1]}%`,
                 }
                 return (
-
                     <div className='snake-dot' style={style} key={index}> </div>
                 )
             })}
+            <div>
+                <button onClick={right}>Влево</button>
+                <button onClick={left}>Вправо</button>
+                <button onClick={up}>Вверх</button>
+                <button onClick={down}>Вниз</button>
+            </div>
         </>
     )
 }

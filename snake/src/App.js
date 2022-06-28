@@ -1,4 +1,3 @@
-
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { ReactComponent as GITHUB } from '../src/assets/github.svg'
@@ -14,8 +13,6 @@ const App = () => {
     const [start, setStart] = useState(false);
 
 
-
-
     useEffect(() => {
         setScore(score + 1)
     }, [food]);
@@ -26,15 +23,13 @@ const App = () => {
     }
 
 
-
-    const WIDTH = 400;
-    const HEIGHT = 400;
+    const SIZE = 400;
     const apple = './image/apple.svg';
     const cherry = './image/cherry.svg';
-    const watermelon = './image/watermelon.svg';
+    const grape = './image/grape.svg';
 
 
-    const fruitFood = [apple, cherry, watermelon];
+    const fruitFood = [apple, cherry, grape];
     let picture = fruitFood.map(img => img);
 
     const imgRandom = (imgArr) => imgArr[Math.floor(Math.random() * imgArr.length)];
@@ -42,13 +37,15 @@ const App = () => {
     return (
         <>
             <h1 style={{textAlign: 'center'}}>Score : { score }</h1>
-            <div className="game-area" style={{width: `${WIDTH}px`, height: `${HEIGHT}px`}}>
-                <Snake width={WIDTH} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
+            <div className="game-area" style={{width: `${SIZE}px`, height: `${SIZE}px`}}>
+                <Snake size={SIZE} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
                 <Food food={food} picture={picture} imgRandom={imgRandom}/>
             </div>
-            <div className='movement'>
+            <div className='start'>
                 {start ? <button className='stop' onClick={toggleStart}>STOP</button> : <button className='start' onClick={toggleStart}>START</button>}
             </div>
+
+
             <footer className='footer'>
                 <p>© by Sergej Miroshnichenko</p>
                 <div style={{alignItems: 'baseline'}}><a className='footer-github' href="https://github.com/sergejmiroshnichenko?tab=repositories"><GITHUB/> Github </a></div>
