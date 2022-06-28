@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Modal from '../../components/Modal/Modal'
 
 
-const Snake = ({width, food, setFood, score}) => {
+const Snake = ({width, food, setFood, score, setScore, modal, setModal, openModal, closeModal}) => {
 
     let SPEED = 500;
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
@@ -11,17 +11,9 @@ const Snake = ({width, food, setFood, score}) => {
     const [movement, setMovement] = useState(AVAILABLE_MOVES[0]);
     const [timerId, setTimerId] = useState(false);
     const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
-    const [modal, setModal] = useState(false);
+    // const [modal, setModal] = useState(false);
     const [pause, setPause] = useState(false);
 
-
-    const openModal = () => {
-        setModal(true)
-    }
-
-    const closeModal = () => {
-        setModal(false)
-    }
 
 
     const getRandomCoordinates = () => {
@@ -75,28 +67,17 @@ const Snake = ({width, food, setFood, score}) => {
         snakeDots.forEach((dot) => {
             if (head[0] === dot[0] && head[1] === dot[1]) {
                 openModal();
-                snakeStop()
-                // return () => {window.location.reload()}
+                snakeStop();
+                setSnakeDots([[0, 0], [4, 0], [8, 0]]);
             }
         });
     }
 
-    // const snakeMove = () => {
-    //     const timerId = setTimeout(forTimer, (score > 4 ? SPEED = 200 : SPEED = 500));
-    //     setTimerId(timerId);
-    // }
-
-
-    // useEffect(() => {
-    //     !modal && snakeMove();
-    // }, [snakeDots]);
-
-
     useEffect(() => {
         const timerId = setTimeout(() => {
-           pause && forTimer (score > 4 ? SPEED = 200 : SPEED = 500);
+            pause && forTimer();
             setTimerId(timerId)
-        });
+        }, score > 4 ? SPEED = 200 : SPEED = 500);
 
         return () => {
             clearTimeout(timerId);
@@ -139,6 +120,7 @@ const Snake = ({width, food, setFood, score}) => {
         <>
             {modal && <Modal text={'Game over'} score={score} closeModal={closeModal}/>}
             {snakeDots.map((dot, index) => {
+
                 const style = {
                     left: `${dot[0]}%`,
                     top: `${dot[1]}%`,

@@ -10,7 +10,16 @@ const App = () => {
 
     const [food, setFood] = useState([0, 8]);
     const [score, setScore] = useState(-1);
+    const [modal, setModal] = useState(false);
 
+
+    const openModal = () => {
+        setModal(true)
+    }
+
+    const closeModal = () => {
+        setModal(false)
+    }
 
     useEffect(() => {
         setScore(score + 1)
@@ -31,9 +40,9 @@ const App = () => {
 
     return (
         <>
-            <h1 style={{textAlign: 'center'}}>Score : { score }</h1>
+            <h1 style={{textAlign: 'center'}}>Score : { closeModal ? score : 0 }</h1>
             <div className="game-area" style={{width: `${WIDTH}px`, height: `${HEIGHT}px`}}>
-                <Snake width={WIDTH} food={food} setFood={setFood} score={score} setScore={setScore}/>
+                <Snake width={WIDTH} food={food} setFood={setFood} score={score} setScore={setScore} modal={modal} setModal={setModal} openModal={openModal} closeModal={closeModal} />
                 <Food food={food} picture={picture} imgRandom={imgRandom}/>
             </div>
 
