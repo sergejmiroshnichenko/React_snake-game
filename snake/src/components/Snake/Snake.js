@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Modal from '../../components/Modal/Modal'
+import PropTypes from "prop-types";
 
 
 const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => {
@@ -26,21 +27,6 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
         setFood([x, y]);
     }
 
-    const left = () => {
-        setMovement(AVAILABLE_MOVES[0])
-    }
-
-    const right = () => {
-        setMovement(AVAILABLE_MOVES[1])
-    }
-
-    const up = () => {
-        setMovement(AVAILABLE_MOVES[2])
-    }
-
-    const down = () => {
-        setMovement(AVAILABLE_MOVES[3])
-    }
 
     const openModal = () => {
         setModal(true)
@@ -50,6 +36,8 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
         setModal(false)
         setScore(0)
     }
+
+    console.log('closeModal')
 
     const forTimer = () => {
         const newSnake = [...snakeDots];
@@ -143,14 +131,28 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
                     <div className='snake-dot' style={style} key={index}> </div>
                 )
             })}
-            <div>
-                <button onClick={right}>Влево</button>
-                <button onClick={left}>Вправо</button>
-                <button onClick={up}>Вверх</button>
-                <button onClick={down}>Вниз</button>
-            </div>
         </>
     )
+}
+
+
+Snake.propTypes = {
+    setFood: PropTypes.func,
+    setScore: PropTypes.func,
+    toggleStart: PropTypes.func,
+    size:PropTypes.number,
+    food:PropTypes.array,
+    score:PropTypes.number,
+    start: PropTypes.oneOf(['submit', 'button'])
+}
+
+Snake.defaultProps = {
+    setFood: () => {},
+    setScore: () => {},
+    toggleStart: () => {},
+    size: 400,
+    score: 0,
+    food: [],
 }
 
 export default Snake;

@@ -1,4 +1,6 @@
-
+h1{
+  text-align: center;
+}
 .game-area{
   position: relative;
   margin: 15px auto;
@@ -21,14 +23,7 @@
   height: 6%;
 }
 
-.start{
-  display: flex;
-  justify-content: center;
-}
-
 .stop, .start {
-  margin-left: 25px;
-  background: red;
   color: white;
   border: 0;
   width: 60px;
@@ -36,10 +31,18 @@
   border-radius: 140px;
   font-size: 15px;
   cursor: pointer;
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .start{
   background: green;
+}
+
+.stop{
+  background: red;
 }
 
 .footer{

@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import PropTypes from 'prop-types';
 
 
-const Modal = ({ closeModal, text, score, setScore}) => {
+const Modal = ({ closeModal, text, score }) => {
 
     useEffect(() => {
         document.body.classList.add('scroll-lock');
@@ -23,7 +23,7 @@ const Modal = ({ closeModal, text, score, setScore}) => {
                 </div>
 
                 <div className={styles.btnBlock}>
-                    <button onClick={() => {closeModal(); setScore(score)}} className={styles.btnSuccess} type='button'> Yes</button>
+                    <button onClick={ closeModal} className={styles.btnSuccess} type='button'> Yes</button>
                     <button className={styles.btnDanger} type='button' onClick={closeModal}> No </button>
                 </div>
             </div>

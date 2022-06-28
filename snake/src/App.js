@@ -36,7 +36,7 @@ const App = () => {
 
     return (
         <>
-            <h1 style={{textAlign: 'center'}}>Score : { score }</h1>
+            <h1>Score : { score }</h1>
             <div className="game-area" style={{width: `${SIZE}px`, height: `${SIZE}px`}}>
                 <Snake size={SIZE} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
                 <Food food={food} picture={picture} imgRandom={imgRandom}/>
