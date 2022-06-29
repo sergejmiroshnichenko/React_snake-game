@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import styles from './Food.module.scss'
 
 
 const Food = ({ food, picture, imgRandom }) => {
@@ -11,7 +12,7 @@ const Food = ({ food, picture, imgRandom }) => {
 
     return (
         <>
-            <img className="snake-food" style={style} src={ imgRandom(picture) } alt="Food" />
+            <img className={styles.snakeFood} style={style} src={ imgRandom(picture) } alt="Food" />
         </>
     )
 }

@@ -1,29 +1,14 @@
 h1{
   text-align: center;
 }
+
 .game-area{
   position: relative;
   margin: 15px auto;
   border: 2px solid red;
 }
 
-.snake-dot{
-  position: absolute;
-  width: 4%;
-  height: 4%;
-  background: black;
-  border: 1px solid white;
-  z-index: 2;
-}
-
-.snake-food{
-  z-index: 1;
-  position: absolute;
-  width: 6%;
-  height: 6%;
-}
-
-.stop, .start {
+.STOP, .START {
   color: white;
   border: 0;
   width: 60px;
@@ -37,11 +22,11 @@ h1{
   justify-content: center;
 }
 
-.start{
+.START{
   background: green;
 }
 
-.stop{
+.STOP{
   background: red;
 }
 
@@ -55,11 +40,11 @@ h1{
 
 }
 
-.footer-github{
+a{
   text-decoration: none;
   margin:35px;
 }
 
-.footer-github:hover{
+a:hover{
   color: red
 }

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Modal from '../../components/Modal/Modal'
 import PropTypes from "prop-types";
+import styles from './Snake.module.scss'
 
 
 const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => {
 
-    let SPEED = 500;
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
 
 
@@ -36,8 +36,6 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
         setModal(false)
         setScore(0)
     }
-
-    console.log('closeModal')
 
     const forTimer = () => {
         const newSnake = [...snakeDots];
@@ -84,13 +82,14 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
     }
 
     useEffect(() => {
-        const timerId = setTimeout(() => {
+        let SPEED = score > 4 ?  200 : 500;
+        const timer = setTimeout(() => {
             start && forTimer();
             setTimerId(timerId)
-        }, score > 4 ? SPEED = 200 : SPEED = 500);
+        }, SPEED);
 
         return () => {
-            clearTimeout(timerId);
+            clearTimeout(timer);
         };
     }, [start, snakeDots]);
 
@@ -128,7 +127,7 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
                     top: `${dot[1]}%`,
                 }
                 return (
-                    <div className='snake-dot' style={style} key={index}> </div>
+                    <div className={styles.snakeDot} style={style} key={index}> </div>
                 )
             })}
         </>

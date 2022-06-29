@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { ReactComponent as GITHUB } from '../src/assets/github.svg'
-import Snake from "./components/Snake/Snake";
-import Food from './components/Food/Food';
+import { ReactComponent as GITHUB } from '../../assets/github.svg'
+import Snake from "../Snake/Snake";
+import Food from '../Food/Food';
 
 
 
@@ -33,22 +33,23 @@ const App = () => {
     let picture = fruitFood.map(img => img);
 
     const imgRandom = (imgArr) => imgArr[Math.floor(Math.random() * imgArr.length)];
+    const check = start ? 'STOP' : 'START'
 
     return (
         <>
             <h1>Score : { score }</h1>
-            <div className="game-area" style={{width: `${SIZE}px`, height: `${SIZE}px`}}>
+            <div className='game-area' style={{width: `${SIZE}px`, height: `${SIZE}px`}}>
                 <Snake size={SIZE} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
                 <Food food={food} picture={picture} imgRandom={imgRandom}/>
             </div>
             <div className='start'>
-                {start ? <button className='stop' onClick={toggleStart}>STOP</button> : <button className='start' onClick={toggleStart}>START</button>}
+                <button className={check} onClick={toggleStart}>{check}</button>
             </div>
 
 
             <footer className='footer'>
                 <p>© by Sergej Miroshnichenko</p>
-                <div style={{alignItems: 'baseline'}}><a className='footer-github' href="https://github.com/sergejmiroshnichenko?tab=repositories"><GITHUB/> Github </a></div>
+                <div style={{alignItems: 'baseline'}}><a href="https://github.com/sergejmiroshnichenko?tab=repositories"><GITHUB/> Github </a></div>
                 <p>2022</p>
             </footer>
         </>
