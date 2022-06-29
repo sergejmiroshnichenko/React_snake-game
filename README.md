@@ -1,4 +1,4 @@
-Project stack and tools:
+***Project stack and tools:***
 
     React,
     Bootstrap,
