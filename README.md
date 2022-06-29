@@ -13,7 +13,7 @@ __Implemented the famous 'Snake' game :__
 2) pause the game - start/stop button
 3) food appears randomly
 4) when you reach 5 points, snake's movement speed increases
-5) The game ends and a modal window appears with information about points earned when the head collides with the snake's body.
+5) the game ends and a modal window appears with information about points earned when the head collides with the snake's body.
 
 
 
