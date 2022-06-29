@@ -8,7 +8,7 @@
     adaptive layout
 
 
-__Implemented the famous 'Snake' game :
+__Implemented the famous 'Snake' game :__
 1) snake movement - right, left, up, down, which is done from the keyboard with the arrows. 
 2) pause the game - start/stop button
 3) food appears randomly
