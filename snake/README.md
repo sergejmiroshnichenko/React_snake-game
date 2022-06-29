@@ -1,1 +1,1 @@
-https://s-nake-sergejmiroshnichenko.vercel.app/
+https://snake-qxfa-jtzdlgq5x-sergejmiroshnichenko.vercel.app/
