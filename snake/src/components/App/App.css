@@ -1,11 +1,21 @@
-h1{
+.background{
+  background: url('../../assets/background-5.png') no-repeat center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h2{
   text-align: center;
 }
 
 .game-area{
   position: relative;
   margin: 15px auto;
-  border: 2px solid red;
+  border: 2px solid #af0707;
+  box-shadow: 1px 1px 15px 1px rgba(5,0,26);
+  background-image: url('../../assets/snakeField.png');
 }
 
 .STOP, .START {
@@ -37,12 +47,15 @@ h1{
   font-size: 17px;
   font-family: 'Trispace', sans-serif;
   margin-top: 30px;
+  margin-left: 20%;
+  color: white;
 
 }
 
 a{
   text-decoration: none;
   margin:35px;
+  color: white;
 }
 
 a:hover{

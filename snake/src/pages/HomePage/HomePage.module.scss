@@ -1,0 +1,41 @@
+.authorisation{
+  margin: 76px auto;
+  margin-left: 55%;
+}
+
+.input{
+  padding-top: 45%;
+}
+
+.placeholder {
+  border-radius: 15px;
+  height: 25px;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  color: brown;
+}
+
+.btn{
+  padding-top: 45%;
+  margin-left: 10%;
+}
+
+.submit{
+  width: 100px;
+  height: 35px;
+  border-radius: 44px;
+  border: 3px solid white;
+  color: white;
+  font-size: 16px;
+  background: chocolate;
+  cursor: pointer;
+  margin-left: 15%;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+
+.submit:hover{
+  background: #9f4a0d;
+}

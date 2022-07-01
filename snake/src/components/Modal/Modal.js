@@ -1,10 +1,12 @@
-
 import styles from'./Modal.module.scss';
 import {useEffect} from "react";
 import PropTypes from 'prop-types';
+import {useNavigate} from 'react-router-dom'
 
 
 const Modal = ({ closeModal, text, score }) => {
+
+    let navigate = useNavigate()
 
     useEffect(() => {
         document.body.classList.add('scroll-lock');
@@ -24,7 +26,10 @@ const Modal = ({ closeModal, text, score }) => {
 
                 <div className={styles.btnBlock}>
                     <button onClick={ closeModal} className={styles.btnSuccess} type='button'> Yes</button>
-                    <button className={styles.btnDanger} type='button' onClick={closeModal}> No </button>
+                    <button className={styles.btnDanger} type='button' onClick={() => {
+                        navigate('/');
+                        closeModal()
+                    }}> No </button>
                 </div>
             </div>
         </div>

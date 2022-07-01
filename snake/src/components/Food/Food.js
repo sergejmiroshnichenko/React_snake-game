@@ -3,7 +3,16 @@ import PropTypes from "prop-types";
 import styles from './Food.module.scss'
 
 
-const Food = ({ food, picture, imgRandom }) => {
+const Food = ({ food }) => {
+
+    const apple = './image/apple.svg';
+    const cherry = './image/cherry.svg';
+    const grape = './image/grape.svg';
+
+    const fruitFood = [apple, cherry, grape];
+    const picture = fruitFood.map(img => img);
+
+    const imgRandom = (imgArr) => imgArr[Math.floor(Math.random() * imgArr.length)];
 
     const style = {
         left: `${food[0]}%`,
