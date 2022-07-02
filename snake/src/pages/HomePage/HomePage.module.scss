@@ -4,7 +4,7 @@
 }
 
 .input{
-  padding-top: 45%;
+  padding-top: 40%;
 }
 
 .placeholder {
@@ -14,16 +14,23 @@
   font-size: 16px;
   text-align: center;
   color: brown;
+  border: 2px solid burlywood
+}
+
+.error{
+  position: absolute;
 }
 
 .btn{
   padding-top: 45%;
-  margin-left: 10%;
+  margin-left: 14%;
 }
+
+button:disabled { background: burlywood; }
 
 .submit{
   width: 100px;
-  height: 35px;
+  height: 40px;
   border-radius: 44px;
   border: 3px solid white;
   color: white;
@@ -34,8 +41,4 @@
   text-transform: uppercase;
   letter-spacing: 1.2px;
   font-weight: 600;
-}
-
-.submit:hover{
-  background: #9f4a0d;
 }
