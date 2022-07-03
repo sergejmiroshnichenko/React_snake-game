@@ -1,1 +1,1 @@
-https://snake-qxfa-jtzdlgq5x-sergejmiroshnichenko.vercel.app/
+https://snake-tree-master-snake.vercel.app/
