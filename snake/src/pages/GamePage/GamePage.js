@@ -27,14 +27,16 @@ const GamePage = () => {
 
     return(
         <section className={styles.section}>
-            <button onClick={() => {navigate('/')}}> <ArrowLeft/> </button>
-            <h2>Score : {score}</h2>
-            <div className='game-area' style={{width: `${size}px`, height: `${size}px`}}>
-                <Snake size={size} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
-                <Food food={food} />
-            </div>
-            <div className='start'>
-                <button className={check} onClick={toggleStart}>{check}</button>
+            <div className={styles.page}>
+                <button onClick={() => {navigate('/')}}> <ArrowLeft/> </button>
+                <h2>Score : {score}</h2>
+                <div className='game-area' style={{width: `${size}px`, height: `${size}px`}}>
+                    <Snake size={size} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
+                    <Food food={food} />
+                </div>
+                <div className='start'>
+                    <button className={check} onClick={toggleStart}>{check}</button>
+                </div>
             </div>
         </section>
     )

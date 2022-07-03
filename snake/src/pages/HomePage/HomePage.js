@@ -1,62 +1,62 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {ReactComponent as GITHUB} from "../../assets/github.svg";
 import styles from './HomePage.module.scss';
 import {useNavigate} from "react-router-dom";
+import {useForm} from "react-hook-form";
 
 
 const HomePage = () => {
 
     const navigate = useNavigate();
-    const [password, setPassword] = useState('');
-    const [passwordDirty, setPasswordDirty] = useState(false);
-    const [passwordError, setPasswordError] = useState('Login cannot be empty');
-    const [loginValid, setLoginValid] = useState(false);
 
-    useEffect(() => {
-        if(passwordError){
-            setLoginValid(false)
-        } else {
-            setLoginValid(true)
-        }
+    const {
+        register,
+        formState: {
+            errors, isValid
+        },
+        handleSubmit,
+        reset
+    } = useForm({
+        mode: 'onBlur'
+    });
 
-    },[passwordError])
-
-    const passwordHandler = (e) => {
-        setPassword(e.target.value);
-        if(e.target.value.length < 3 ){
-            setPasswordError('Login must be at least 3 letters');
-            if(!e.target.value){
-                setPasswordError('Login cannot be empty');
-            }
-        } else{
-            setPasswordError('')
-        }
+    const onSubmit = (data) => {
+        navigate('./game');
+        reset()
+        alert(JSON.stringify(data));
     }
 
-    const blurHandle = (e) => {
-        e.target.name && setPasswordDirty(true);
-    }
 
     return (
         <section className='background'>
             <div className={styles.authorisation}>
-                <div className={styles.input}>
-                    <input value={password}
-                           onChange={e=>passwordHandler(e)}
-                           onBlur={e => blurHandle(e)}
-                           className={styles.placeholder}
-                           name='password'
-                           type="text"
-                           placeholder='Enter your name...'/>
-                    {(passwordDirty && passwordError) && <div className={styles.error} style={{color:'red'}}>{passwordError}</div>}
-                </div>
-                <div className={styles.btn}>
-                    <button disabled={!loginValid}
-                            className={styles.submit}
-                            onClick={() => {
-                        navigate('./game')
-                    }} type='submit'> Play </button>
-                </div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className={styles.input}>
+                        <input
+                            {...register('firstName', {
+                                required: 'Login cannot be empty',
+                                minLength: {
+                                    value: 3,
+                                    message: 'Login must be at least 3 letters'
+                                },
+                                pattern: {
+                                    value: /^[a-zA-Z]+$/g,
+                                    message: 'Login must be only english letters'
+                                }
+                            })}
+                            className={styles.placeholder}
+                            type="text"
+                            placeholder='Enter your name...'
+                        />
+                        <div className={styles.field}>{errors?.firstName && <p style={{color: 'red'}}>{errors?.firstName?.message}</p>}</div>
+                    </div>
+                    <div className={styles.btn}>
+                        <button className={styles.submit} type="submit" disabled={!isValid}>Play</button>
+                        {/*        onClick={() => {*/}
+                        {/*            navigate('./game')*/}
+                        {/*        }}*/}
+                    </div>
+                </form>
             </div>
 
             <footer className='footer'>
