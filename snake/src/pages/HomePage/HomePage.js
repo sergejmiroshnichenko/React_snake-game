@@ -23,41 +23,32 @@ const HomePage = () => {
     const onSubmit = (data) => {
         navigate('./game');
         reset()
-        alert(JSON.stringify(data));
     }
-
 
     return (
         <section className='background'>
-            <div className={styles.authorisation}>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className={styles.input}>
-                        <input
-                            {...register('firstName', {
-                                required: 'Login cannot be empty',
-                                minLength: {
-                                    value: 3,
-                                    message: 'Login must be at least 3 letters'
-                                },
-                                pattern: {
-                                    value: /^[a-zA-Z]+$/g,
-                                    message: 'Login must be only english letters'
-                                }
-                            })}
-                            className={styles.placeholder}
-                            type="text"
-                            placeholder='Enter your name...'
-                        />
-                        <div className={styles.field}>{errors?.firstName && <p style={{color: 'red'}}>{errors?.firstName?.message}</p>}</div>
-                    </div>
-                    <div className={styles.btn}>
-                        <button className={styles.submit} type="submit" disabled={!isValid}>Play</button>
-                        {/*        onClick={() => {*/}
-                        {/*            navigate('./game')*/}
-                        {/*        }}*/}
-                    </div>
-                </form>
-            </div>
+            <form className={styles.authorisation} onSubmit={handleSubmit(onSubmit)}>
+                <div className={styles.input}>
+                    <input
+                        {...register('firstName', {
+                            required: 'please enter your name',
+                            minLength: {
+                                value: 3,
+                                message: 'at least 3 english letters'
+                            },
+                            pattern: {
+                                value: /^[a-zA-Z]+$/g,
+                                message: 'only english letters'
+                            }
+                        })}
+                        className={styles.placeholder}
+                        type="text"
+                        placeholder='Enter your name...'
+                    />
+                    <p className={styles.error}>{errors?.firstName && errors?.firstName?.message}</p>
+                </div>
+                <button className={styles.submit} type="submit" disabled={!isValid}>Play</button>
+            </form>
 
             <footer className='footer'>
                 <p>© by Sergej Miroshnichenko</p>

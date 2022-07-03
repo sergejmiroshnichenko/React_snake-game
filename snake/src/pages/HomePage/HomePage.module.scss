@@ -4,14 +4,17 @@
 }
 
 .input{
-  padding-top: 40%;
+  padding-top: 30%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.field{
+.error{
   position: absolute;
-  //margin: auto;
-  //top: 0; left: 0; bottom: 0; right: 0;
+  color: red;
+  margin-top: 2%;
 }
 
 .placeholder {
@@ -21,32 +24,25 @@
   font-size: 16px;
   text-align: center;
   color: brown;
-  border: 2px solid burlywood
-}
-
-.error{
-  position: absolute;
-}
-
-.btn{
-  padding-top: 45%;
-  margin-left: 14%;
+  border: 2px solid burlywood;
+  font-family: Bradley Hand, cursive
 }
 
 button:disabled { background: burlywood; }
 
 .submit{
+  margin-top: 45%;
   width: 100px;
   height: 40px;
   border-radius: 44px;
   border: 3px solid white;
   color: white;
-  font-size: 16px;
+  font-size: 17px;
   background: chocolate;
   cursor: pointer;
-  margin-left: 15%;
+  margin-left: 24.2%;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  font-weight: 600;
+  font-weight: 700;
   box-shadow: 1px 2px 2px 2px chocolate;
 }
