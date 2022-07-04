@@ -17,7 +17,7 @@ const HomePage = () => {
         handleSubmit,
         reset
     } = useForm({
-        mode: 'onBlur'
+        mode : 'onChange'
     });
 
     const onSubmit = (data) => {
