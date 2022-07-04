@@ -1,1 +1,1 @@
-https://snake-tree-master-snake.vercel.app/
+https://snake-tree-master-snake-2u7u.vercel.app/
