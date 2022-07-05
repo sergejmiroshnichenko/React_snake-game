@@ -6,6 +6,7 @@ import Header from "../Header/Header";
 
 
 const App = () => {
+
     return (
         <Router>
             <Header/>

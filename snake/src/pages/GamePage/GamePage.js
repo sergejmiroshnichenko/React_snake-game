@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {ReactComponent as ArrowLeft} from "../../assets/arrow-left.svg";
 
 
-const GamePage = () => {
+const GamePage = ({firstName}) => {
 
     let navigate = useNavigate()
 
@@ -14,6 +14,7 @@ const GamePage = () => {
     const [start, setStart] = useState(false);
     const [score, setScore] = useState(-1);
     const [food, setFood] = useState([0, 8]);
+
 
     const toggleStart = () => {
         setStart(!start)
@@ -29,7 +30,7 @@ const GamePage = () => {
         <section className={styles.section}>
             <div className={styles.page}>
                 <button onClick={() => {navigate('/')}}> <ArrowLeft/> </button>
-                <h2>Score : {score}</h2>
+                <h2>{firstName} : <span>{score}</span></h2>
                 <div className='game-area' style={{width: `${size}px`, height: `${size}px`}}>
                     <Snake size={size} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
                     <Food food={food} />

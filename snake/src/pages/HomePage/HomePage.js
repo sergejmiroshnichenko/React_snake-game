@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 
 
-const HomePage = () => {
+const HomePage = ({setFirstName}) => {
 
     const navigate = useNavigate();
 
@@ -15,14 +15,16 @@ const HomePage = () => {
             errors, isValid
         },
         handleSubmit,
-        reset
+        reset,
     } = useForm({
         mode : 'onChange'
     });
 
     const onSubmit = (data) => {
         navigate('./game');
-        reset()
+        reset();
+        setFirstName(data.firstName);
+        console.log(data);
     }
 
     return (
@@ -47,7 +49,9 @@ const HomePage = () => {
                     />
                     <p className={styles.error}>{errors?.firstName && errors?.firstName?.message}</p>
                 </div>
-                <button className={styles.submit} type="submit" disabled={!isValid}>Play</button>
+                <button className={styles.submit} type="submit" disabled={!isValid}
+
+                >Play</button>
             </form>
 
             <footer className='footer'>
