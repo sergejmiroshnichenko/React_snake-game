@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import Modal from '../../components/Modal/Modal'
 import PropTypes from "prop-types";
-import styles from './Snake.module.scss'
+import styles from './Snake.module.scss';
+import {ReactComponent as ArrowRight} from "../../assets/arrow-right.svg";
+
 
 
 const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => {
@@ -36,6 +38,23 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
         setModal(false)
         setScore(0)
     }
+
+    const rightMove = () => {
+        setMovement(AVAILABLE_MOVES[0])
+    }
+
+    const leftMove = () => {
+        setMovement(AVAILABLE_MOVES[1])
+    }
+
+    const upMove = () => {
+        setMovement(AVAILABLE_MOVES[2])
+    }
+
+    const downMove = () => {
+        setMovement(AVAILABLE_MOVES[3])
+    }
+
 
     const forTimer = () => {
         const newSnake = [...snakeDots];
@@ -119,6 +138,10 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
 
     return (
         <>
+            <button className={styles.right} onClick={rightMove}><ArrowRight/></button>
+            <button className={styles.up} onClick={upMove}><ArrowRight/></button>
+            <button className={styles.left} onClick={leftMove}><ArrowRight/></button>
+            <button className={styles.down} onClick={downMove}><ArrowRight/></button>
             {modal && <Modal text={'Game over'} score={score} closeModal={closeModal}/>}
             {snakeDots.map((dot, index) => {
 

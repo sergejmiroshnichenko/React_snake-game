@@ -6,3 +6,30 @@
     border: 1px solid white;
     z-index: 2;
 }
+
+
+button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.right{
+    transform: translateY(55px) translateX(244px);
+}
+
+.down{
+    transform: rotate(90deg);
+    margin-top:75px;
+    margin-left: 177px
+}
+
+.up{
+    transform: rotate(-90deg);
+    margin-left: 138px;
+    margin-top:420px;
+}
+
+.left{
+    transform: rotate(180deg) translateY(-53px) translateX(105px);
+}

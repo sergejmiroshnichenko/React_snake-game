@@ -2,13 +2,9 @@ import Snake from "../../components/Snake/Snake";
 import Food from "../../components/Food/Food";
 import React, {useEffect, useState} from "react";
 import styles from "./GamePage.module.scss"
-import {useNavigate} from "react-router-dom";
-import {ReactComponent as ArrowLeft} from "../../assets/arrow-left.svg";
 
 
 const GamePage = ({firstName}) => {
-
-    let navigate = useNavigate()
 
     const size = 400;
     const [start, setStart] = useState(false);
@@ -29,7 +25,6 @@ const GamePage = ({firstName}) => {
     return(
         <section className={styles.section}>
             <div className={styles.page}>
-                <button onClick={() => {navigate('/')}}> <ArrowLeft/> </button>
                 <h2>{firstName} : <span>{score}</span></h2>
                 <div className='game-area' style={{width: `${size}px`, height: `${size}px`}}>
                     <Snake size={size} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
