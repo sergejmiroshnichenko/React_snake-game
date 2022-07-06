@@ -14,7 +14,9 @@
 
 h2{
   text-align: center;
-  color: blueviolet;
+  color: darkred;
+  letter-spacing: 1.2px;
+  font-family: sans-serif;
 }
 
 .game-area{
