@@ -1,4 +1,4 @@
-https-github-com-sergejmiroshnichenko-snake.vercel.app
+
 
 ***Project stack and tools:***
 
@@ -23,5 +23,5 @@ __Implemented the famous 'Snake' game :__
 
 
 
-
+https-github-com-sergejmiroshnichenko-snake.vercel.app
 
