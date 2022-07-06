@@ -1,3 +1,5 @@
+https-github-com-sergejmiroshnichenko-snake.vercel.app
+
 ***Project stack and tools:***
 
     React,
@@ -23,4 +25,3 @@ __Implemented the famous 'Snake' game :__
 
 
 
-https://snake-tree-master-snake-2u7u.vercel.app/
