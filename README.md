@@ -1,3 +1,4 @@
+https://snake-tree-master-snake-dfmu.vercel.app/
 
 ***Project stack and tools:***
 
@@ -18,11 +19,4 @@ __Implemented the famous 'Snake' game :__
 4) food appears randomly
 5) when you reach 5 points, snake's movement speed increases
 6) the game ends and a modal window appears with information about points earned when the head collides with the snake's body.
-
-
-
-
-
-
-https-github-com-sergejmiroshnichenko-snake.vercel.app
 
