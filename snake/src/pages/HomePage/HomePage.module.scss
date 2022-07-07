@@ -1,10 +1,8 @@
 .authorisation{
-  margin: 76px auto;
-  margin-left: 55%;
+  margin: 15% auto;
 }
 
 .input{
-  padding-top: 30%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -14,14 +12,16 @@
 .error{
   position: absolute;
   color: red;
-  margin-top: 2%;
+  margin-top: 4%;
+  font-size: 22px;
+  -webkit-text-stroke: 0.2px black;
 }
 
 .placeholder {
-  border-radius: 15px;
-  height: 25px;
-  width: 100%;
-  font-size: 16px;
+  border-radius: 25px;
+  height: 50px;
+  width: 150%;
+  font-size: 22px;
   text-align: center;
   color: brown;
   border: 2px solid burlywood;
@@ -32,17 +32,49 @@ button:disabled { background: burlywood; }
 
 .submit{
   margin-top: 45%;
-  width: 100px;
-  height: 40px;
+  width: 110px;
+  height: 45px;
   border-radius: 44px;
   border: 3px solid white;
   color: white;
-  font-size: 17px;
-  background: chocolate;
+  font-size: 22px;
   cursor: pointer;
-  margin-left: 24.2%;
+  margin-left: 33.2%;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   font-weight: 700;
   box-shadow: 1px 2px 2px 2px chocolate;
+  background: chocolate;
+}
+
+@media (max-width: 480px) {
+  .input {
+    margin-top: -130%;
+  }
+
+  .placeholder {
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 75px;
+  }
+
+  .submit{
+    margin-top: 25%;
+    width: 65px;
+    height: 30px;
+    border-radius: 44px;
+    font-size: 12px;
+    margin-left: 58px;
+  }
+
+  .authorisation{
+    margin: 0 auto;
+  }
+
+  .error{
+    font-size: 16px;
+    margin-top: 9%;
+    margin-right: 0;
+  }
 }

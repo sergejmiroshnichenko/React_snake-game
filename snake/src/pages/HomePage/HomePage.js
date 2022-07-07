@@ -17,7 +17,7 @@ const HomePage = ({setFirstName}) => {
         handleSubmit,
         reset,
     } = useForm({
-        mode : 'onChange'
+        mode: 'onChange'
     });
 
     const onSubmit = (data) => {
@@ -51,7 +51,8 @@ const HomePage = ({setFirstName}) => {
                 </div>
                 <button className={styles.submit} type="submit" disabled={!isValid}
 
-                >Play</button>
+                >Play
+                </button>
             </form>
 
             <footer className='footer'>

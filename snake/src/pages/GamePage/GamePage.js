@@ -26,7 +26,7 @@ const GamePage = ({firstName}) => {
         <section className={styles.section}>
             <div className={styles.page}>
                 <h2>{firstName} : <span>{score}</span></h2>
-                <div className='game-area' style={{width: `${size}px`, height: `${size}px`}}>
+                <div className='game-area'>
                     <Snake size={size} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
                     <Food food={food} />
                 </div>

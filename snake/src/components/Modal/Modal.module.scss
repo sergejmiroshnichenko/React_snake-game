@@ -53,9 +53,9 @@
       }
 
       .continue {
-        font-size: 26px;
+        font-size: 19px;
         color: deeppink;
-        margin: 10%;
+        margin: 11%;
       }
     }
 
@@ -147,7 +147,7 @@
 @media (max-width: 480px) {
 
   .background {
-    padding: 0 10px;
+    padding: 0;
 
     .content {
       height: 204px;
@@ -155,12 +155,12 @@
       transform: translate(0, 120%);
 
       .block {
-        width: 290px;
+        width: 300px;
         height: 107px;
 
         .question {
-          margin-top: 14px;
-          font-size: 16px;
+          margin-top: 18px;
+          font-size: 26px;
         }
 
         .answer {
@@ -169,9 +169,8 @@
       }
 
       .btnBlock {
-        margin-top: 93px;
+        margin-top: 128px;
         display: flex;
-        justify-content: flex-end;
 
         .btnSuccess {
           width: 50px;
@@ -186,6 +185,7 @@
           margin: 14px;
           font-size: 15px;
           transform: translateY(23%);
+          padding-left: 28px;
         }
       }
     }

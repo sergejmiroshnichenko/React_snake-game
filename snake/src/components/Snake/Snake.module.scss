@@ -33,3 +33,43 @@ button{
 .left{
     transform: rotate(180deg) translateY(-53px) translateX(105px);
 }
+
+@media (max-width: 320px) {
+
+    .page {
+        padding-bottom: 50px;
+    }
+
+    .up{
+        margin-top: 327px;
+        margin-left: 92px;
+    }
+
+    .down{
+        margin-left: 131px;
+    }
+
+    .right{
+        transform: translateY(55px) translateX(200px);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .page {
+        padding-bottom: 50px;
+    }
+
+    .up{
+        margin-top: 345px;
+        margin-left: 102px;
+    }
+
+    .down{
+        margin-left: 140px;
+    }
+
+    .right{
+        transform: translateY(55px) translateX(207px);
+    }
+}
