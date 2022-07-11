@@ -1,4 +1,4 @@
-https://snake-2xay.vercel.app/
+https://sm-steel.vercel.app/
 
 ***Project stack and tools:***
 
