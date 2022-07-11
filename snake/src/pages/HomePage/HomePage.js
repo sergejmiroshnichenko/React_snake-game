@@ -49,9 +49,12 @@ const HomePage = ({setFirstName}) => {
                     />
                     <p className={styles.error}>{errors?.firstName && errors?.firstName?.message}</p>
                 </div>
-                <button className={styles.submit}
-                        type="submit"
-                        disabled={!isValid}>Play</button>
+                <div style={{margin: '0 auto'}}>
+                    <button className={styles.submit}
+                            type="submit"
+                            disabled={!isValid}>Play</button>
+                </div>
+
             </form>
 
             <footer className='footer'>
