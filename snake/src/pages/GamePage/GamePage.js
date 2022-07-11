@@ -22,17 +22,16 @@ const GamePage = ({firstName}) => {
 
     const check = start ? 'STOP' : 'START'
 
-    return(
+    return (
         <section className={styles.section}>
             <div className={styles.page}>
                 <h2>{firstName} : <span>{score}</span></h2>
                 <div className='game-area'>
-                    <Snake size={size} food={food} setFood={setFood} score={score} setScore={setScore} toggleStart={toggleStart} start={start}/>
-                    <Food food={food} />
+                    <Snake size={size} food={food} setFood={setFood} score={score} setScore={setScore}
+                           toggleStart={toggleStart} start={start}/>
+                    <Food food={food}/>
                 </div>
-                <div className='start'>
-                    <button className={check} onClick={toggleStart}>{check}</button>
-                </div>
+                <button className={check} onClick={toggleStart}>{check}</button>
             </div>
         </section>
     )

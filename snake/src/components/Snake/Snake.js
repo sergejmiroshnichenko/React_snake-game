@@ -5,8 +5,7 @@ import styles from './Snake.module.scss';
 import {ReactComponent as ArrowRight} from "../../assets/arrow-right.svg";
 
 
-
-const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => {
+const Snake = ({size, food, setFood, score, setScore, start, toggleStart}) => {
 
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
 
@@ -101,7 +100,7 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
     }
 
     useEffect(() => {
-        let SPEED = score > 4 ?  200 : 500;
+        let SPEED = score > 4 ? 200 : 500;
         const timer = setTimeout(() => {
             start && forTimer();
             setTimerId(timerId)
@@ -111,7 +110,6 @@ const Snake = ({ size, food, setFood, score, setScore, start, toggleStart }) => 
             clearTimeout(timer);
         };
     }, [start, snakeDots]);
-
 
 
     const checkBorder = position => {
@@ -162,16 +160,19 @@ Snake.propTypes = {
     setFood: PropTypes.func,
     setScore: PropTypes.func,
     toggleStart: PropTypes.func,
-    size:PropTypes.number,
-    food:PropTypes.array,
-    score:PropTypes.number,
+    size: PropTypes.number,
+    food: PropTypes.array,
+    score: PropTypes.number,
     start: PropTypes.oneOf(['submit', 'button'])
 }
 
 Snake.defaultProps = {
-    setFood: () => {},
-    setScore: () => {},
-    toggleStart: () => {},
+    setFood: () => {
+    },
+    setScore: () => {
+    },
+    toggleStart: () => {
+    },
     size: 400,
     score: 0,
     food: [],

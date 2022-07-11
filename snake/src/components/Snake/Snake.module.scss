@@ -1,10 +1,11 @@
-.snakeDot{
+.snakeDot {
     position: absolute;
     width: 4%;
     height: 4%;
     background: black;
     border: 1px solid white;
     z-index: 2;
+    box-shadow: 1px 1px 8px 1px rgba(5,0,26);
 }
 
 
@@ -15,61 +16,103 @@ button{
 }
 
 .right{
-    transform: translateY(55px) translateX(244px);
+    position: absolute;
+    bottom: -29.2%;
+    left: 62%;
 }
 
 .down{
     transform: rotate(90deg);
-    margin-top:75px;
-    margin-left: 177px
+    position: absolute;
+    bottom: -43%;
+    left: 44.5%;
 }
 
 .up{
     transform: rotate(-90deg);
-    margin-left: 138px;
-    margin-top:420px;
+    position: absolute;
+    top: 106%;
+    left: 45%;
 }
 
 .left{
-    transform: rotate(180deg) translateY(-53px) translateX(105px);
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: -28.5%;
+    left: 27%;
 }
 
 @media (max-width: 320px) {
 
-    .page {
-        padding-bottom: 50px;
-    }
-
     .up{
-        margin-top: 327px;
-        margin-left: 92px;
+        top: 104%;
+        left: 43%;
     }
 
     .down{
-        margin-left: 131px;
+        bottom: -49%;
+        left: 43%;
     }
 
     .right{
-        transform: translateY(55px) translateX(200px);
+        top: 121%;
+        left: 63%;
+    }
+
+    .left{
+        transform: rotate(180deg);
+        top: 132%;
+        left: 24%;
+
     }
 }
 
-@media (max-width: 480px) {
-
-    .page {
-        padding-bottom: 50px;
-    }
-
-    .up{
-        margin-top: 345px;
-        margin-left: 102px;
-    }
+@media (max-width: 359px) {
 
     .down{
-        margin-left: 140px;
+        bottom: -47%;
     }
 
     .right{
-        transform: translateY(55px) translateX(207px);
+        bottom: -31.8%;
+    }
+
+    .left{
+        bottom: -32%;
+        left: 26%;
+    }
+}
+
+@media (min-width: 359px) and (max-width: 379px){
+
+    .up{
+        top: 105%;
+    }
+
+    .right{
+        bottom: -31%;
+    }
+
+    .left{
+        bottom: -31%;
+        left: 26%;
+    }
+
+    .down{
+        bottom: -47%;
+    }
+}
+
+@media (min-width: 379px) and (max-width: 399px){
+    .right{
+        bottom: -30.8%;
+    }
+
+    .left{
+        bottom: -30.5%;
+    }
+
+    .down{
+        bottom: -46%;
     }
 }
