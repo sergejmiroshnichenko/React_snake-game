@@ -1,5 +1,6 @@
 .authorisation{
   margin: 15% auto;
+  position: absolute;
 }
 
 .input{
@@ -12,7 +13,7 @@
 .error{
   position: absolute;
   color: red;
-  margin-top: 4%;
+  margin-top: 19%;
   font-size: 22px;
   -webkit-text-stroke: 0.2px black;
 }
@@ -67,7 +68,7 @@ button:disabled { background: burlywood; }
   }
 
   .authorisation{
-    margin: 100px auto 0 auto;
+    margin: 50px auto 0 auto;
     position: fixed;
   }
 
