@@ -163,7 +163,7 @@ Snake.propTypes = {
     size: PropTypes.number,
     food: PropTypes.array,
     score: PropTypes.number,
-    start: PropTypes.oneOf(['submit', 'button'])
+    start: PropTypes.bool.isRequired
 }
 
 Snake.defaultProps = {

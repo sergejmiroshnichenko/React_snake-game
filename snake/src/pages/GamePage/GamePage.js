@@ -2,6 +2,7 @@ import Snake from "../../components/Snake/Snake";
 import Food from "../../components/Food/Food";
 import React, {useEffect, useState} from "react";
 import styles from "./GamePage.module.scss"
+import PropTypes from "prop-types";
 
 
 const GamePage = ({firstName}) => {
@@ -35,6 +36,10 @@ const GamePage = ({firstName}) => {
             </div>
         </section>
     )
+}
+
+GamePage.propTypes = {
+    firstName: PropTypes.string.isRequired,
 }
 
 export default GamePage;

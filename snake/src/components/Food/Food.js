@@ -9,28 +9,12 @@ const Food = ({food}) => {
     const cherry = './image/cherry.svg';
     const grape = './image/grape.svg';
 
-    // const fruitFood = [apple, cherry, grape];
+    const fruitFood = [apple, cherry, grape];
 
-    const fruitFood = [
-        {
-            fruit: apple,
-            count: 1
-        },
-        {
-            fruit: cherry,
-            count: 5
-        },
-        {
-            fruit: grape,
-            count: 10
-        }
-    ]
 
-    const picture = fruitFood.map(img => img.fruit);
-    console.log(picture)
+    const picture = fruitFood.map(img => img);
 
     const imgRandom = (imgArr) => {
-        console.log(imgArr)
         return imgArr[Math.floor(Math.random() * imgArr.length)];
     }
 
@@ -47,13 +31,10 @@ const Food = ({food}) => {
 }
 
 Food.propTypes = {
-    imgRandom: PropTypes.func,
     food: PropTypes.array,
 }
 
 Food.defaultProps = {
-    imgRandom: () => {
-    },
     food: [],
 }
 

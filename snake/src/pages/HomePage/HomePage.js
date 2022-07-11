@@ -3,6 +3,7 @@ import {ReactComponent as GITHUB} from "../../assets/github.svg";
 import styles from './HomePage.module.scss';
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
+import PropTypes from "prop-types";
 
 
 const HomePage = ({setFirstName}) => {
@@ -24,7 +25,6 @@ const HomePage = ({setFirstName}) => {
         navigate('./game');
         reset();
         setFirstName(data.firstName);
-        console.log(data);
     }
 
     return (
@@ -65,6 +65,15 @@ const HomePage = ({setFirstName}) => {
             </footer>
         </section>
     )
+}
+
+
+HomePage.propTypes = {
+    setFirstName: PropTypes.func,
+}
+
+HomePage.defaultProps = {
+    setFirstName: () => {}
 }
 
 export default HomePage;
