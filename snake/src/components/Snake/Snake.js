@@ -5,7 +5,7 @@ import styles from './Snake.module.scss';
 import {ReactComponent as ArrowRight} from "../../assets/arrow-right.svg";
 
 
-const Snake = ({size, food, setFood, score, setScore, start, toggleStart, snakeDots, setSnakeDots}) => {
+const Snake = ({size, foodCoordinates, setFoodCoordinates, score, setScore, start, toggleStart, snakeDots, setSnakeDots}) => {
 
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
 
@@ -24,7 +24,7 @@ const Snake = ({size, food, setFood, score, setScore, start, toggleStart, snakeD
             x = Math.floor((Math.random() * (max - min + 2) + min) / 4) * 4;
             y = Math.floor((Math.random() * (max - min + 2) + min) / 4) * 4;
         } while (snakeDots.some(elem => elem[0] === [x, y] && elem[1] === [x, y]));
-        setFood([x, y]);
+        setFoodCoordinates([x, y]);
     }
 
 
@@ -82,7 +82,7 @@ const Snake = ({size, food, setFood, score, setScore, start, toggleStart, snakeD
 
         newSnake.push(head);
         let connectIndex = 1;
-        if (head[0] === food[0] && head[1] === food[1]) {
+        if (head[0] === foodCoordinates[0] && head[1] === foodCoordinates[1]) {
             connectIndex = 0;
             getRandomCoordinates();
         }
@@ -101,9 +101,10 @@ const Snake = ({size, food, setFood, score, setScore, start, toggleStart, snakeD
 
     useEffect(() => {
         let speed;
-        if (score < 50) speed = 600
+        if (score < 50) speed = 600;
         if (score > 50 && score < 100) speed = 400;
-        if (score > 150 && score < 200) speed = 200;
+        if (score > 100 && score < 150) speed = 200;
+        if (score > 150) speed = 100;
         const timer = setTimeout(() => {
             start && forTimer();
             setTimerId(timerId)
@@ -151,7 +152,7 @@ const Snake = ({size, food, setFood, score, setScore, start, toggleStart, snakeD
                     top: `${dot[1]}%`,
                 }
                 return (
-                    <div className={styles.snakeDot} style={style} key={index}></div>
+                    <div className={styles.snakeDot} style={style} key={index}> </div>
                 )
             })}
         </>
@@ -166,7 +167,9 @@ Snake.propTypes = {
     size: PropTypes.number,
     food: PropTypes.array,
     score: PropTypes.number,
-    start: PropTypes.bool.isRequired
+    start: PropTypes.bool.isRequired,
+    snakeDots: PropTypes.array.isRequired,
+    setSnakeDots: PropTypes.func,
 }
 
 Snake.defaultProps = {
@@ -176,6 +179,7 @@ Snake.defaultProps = {
     },
     toggleStart: () => {
     },
+    setSnakeDots: () => {},
     size: 400,
     score: 0,
     food: [],

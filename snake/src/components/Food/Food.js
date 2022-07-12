@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from './Food.module.scss';
 
 
-const Food = ({food, snakeDots, setFoodCount}) => {
+const Food = ({foodCoordinates, snakeDots, setFoodCount}) => {
 
     const fruitFood = [
         {
@@ -33,23 +33,26 @@ const Food = ({food, snakeDots, setFoodCount}) => {
 
 
     const style = {
-        left: `${food[0]}%`,
-        top: `${food[1]}%`
+        left: `${foodCoordinates[0]}%`,
+        top: `${foodCoordinates[1]}%`
     }
 
     return (
         <>
-            <img className={styles.snakeFood} style={style} src={fruit.fruitImg} alt="Food"/>
+            <img className={styles.snakeFood} style={style} src={fruit.fruitImg} alt="food"/>
         </>
     )
 }
 
 Food.propTypes = {
     food: PropTypes.array,
+    snakeDots: PropTypes.array.isRequired,
+    setFoodCount: PropTypes.func
 }
 
 Food.defaultProps = {
     food: [],
+    setFoodCount: () => {}
 }
 
 export default Food;

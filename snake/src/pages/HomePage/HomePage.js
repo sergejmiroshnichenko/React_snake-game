@@ -38,6 +38,10 @@ const HomePage = ({setFirstName}) => {
                                 value: 3,
                                 message: 'at least 3 english letters'
                             },
+                            maxLength: {
+                                value: 9,
+                                message: 'not more 9 english letters'
+                            },
                             pattern: {
                                 value: /^[a-zA-Z]+$/g,
                                 message: 'only english letters'

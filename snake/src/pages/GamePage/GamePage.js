@@ -10,7 +10,7 @@ const GamePage = ({firstName}) => {
     const size = 400;
     const [start, setStart] = useState(false);
     const [score, setScore] = useState(0);
-    const [food, setFood] = useState([0, 8]);
+    const [foodCoordinates, setFoodCoordinates] = useState([0, 8]);
     const [foodCount, setFoodCount] = useState(0);
     const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
 
@@ -21,18 +21,24 @@ const GamePage = ({firstName}) => {
 
     useEffect(() => {
         setScore(score + foodCount)
-    }, [food]);
+    }, [foodCoordinates]);
 
     const check = start ? 'STOP' : 'START'
 
     return (
         <section className={styles.section}>
             <div className={styles.page}>
+                <div className={styles.condition}>
+                    <img src="./image/grape.svg" alt="food"/> - 10
+                    <img src="./image/apple.svg" alt="food"/> - 5
+                    <img src="./image/cherry.svg" alt="food"/> - 1
+                </div>
                 <h2>{firstName} : <span>{score}</span></h2>
                 <div className='game-area'>
-                    <Snake size={size} food={food} setFood={setFood} score={score} setScore={setScore}
+                    <Snake size={size} foodCoordinates={foodCoordinates} setFoodCoordinates={setFoodCoordinates}
+                           score={score} setScore={setScore}
                            toggleStart={toggleStart} start={start} snakeDots={snakeDots} setSnakeDots={setSnakeDots}/>
-                    <Food food={food} snakeDots={snakeDots} setFoodCount={setFoodCount}/>
+                    <Food foodCoordinates={foodCoordinates} snakeDots={snakeDots} setFoodCount={setFoodCount}/>
                 </div>
                 <button className={check} onClick={toggleStart}>{check}</button>
             </div>
