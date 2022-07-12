@@ -5,14 +5,13 @@ import styles from './Snake.module.scss';
 import {ReactComponent as ArrowRight} from "../../assets/arrow-right.svg";
 
 
-const Snake = ({size, food, setFood, score, setScore, start, toggleStart}) => {
+const Snake = ({size, food, setFood, score, setScore, start, toggleStart, snakeDots, setSnakeDots}) => {
 
     const AVAILABLE_MOVES = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
 
 
     const [movement, setMovement] = useState(AVAILABLE_MOVES[0]);
     const [timerId, setTimerId] = useState(false);
-    const [snakeDots, setSnakeDots] = useState([[0, 0], [4, 0], [8, 0]]);
     const [modal, setModal] = useState(false);
 
     const getRandomCoordinates = () => {
@@ -34,7 +33,7 @@ const Snake = ({size, food, setFood, score, setScore, start, toggleStart}) => {
     }
 
     const closeModal = () => {
-        setModal(false)
+        setModal(false);
         setScore(0)
     }
 
@@ -93,18 +92,22 @@ const Snake = ({size, food, setFood, score, setScore, start, toggleStart}) => {
         snakeDots.forEach((dot) => {
             if (head[0] === dot[0] && head[1] === dot[1]) {
                 openModal();
-                toggleStart()
+                toggleStart();
                 setSnakeDots([[0, 0], [4, 0], [8, 0]]);
             }
         });
     }
 
+
     useEffect(() => {
-        let SPEED = score > 4 ? 200 : 500;
+        let speed;
+        if (score < 50) speed = 600
+        if (score > 50 && score < 100) speed = 400;
+        if (score > 150 && score < 200) speed = 200;
         const timer = setTimeout(() => {
             start && forTimer();
             setTimerId(timerId)
-        }, SPEED);
+        }, speed);
 
         return () => {
             clearTimeout(timer);
@@ -148,7 +151,7 @@ const Snake = ({size, food, setFood, score, setScore, start, toggleStart}) => {
                     top: `${dot[1]}%`,
                 }
                 return (
-                    <div className={styles.snakeDot} style={style} key={index}> </div>
+                    <div className={styles.snakeDot} style={style} key={index}></div>
                 )
             })}
         </>
