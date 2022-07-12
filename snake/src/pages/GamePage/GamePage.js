@@ -29,11 +29,14 @@ const GamePage = ({firstName}) => {
         <section className={styles.section}>
             <div className={styles.page}>
                 <div className={styles.condition}>
-                    <img src="./image/grape.svg" alt="food"/> - 10
-                    <img src="./image/apple.svg" alt="food"/> - 5
-                    <img src="./image/cherry.svg" alt="food"/> - 1
+                    <img src="./image/grape.svg" alt="food"/>-
+                    <span>10</span>
+                    <img src="./image/apple.svg" alt="food"/>-
+                    <span>5</span>
+                    <img src="./image/cherry.svg" alt="food"/>-
+                    <span>1</span>
                 </div>
-                <h2>{firstName} : <span>{score}</span></h2>
+                <h2>{firstName} : <span className={styles.score}>{score}</span></h2>
                 <div className='game-area'>
                     <Snake size={size} foodCoordinates={foodCoordinates} setFoodCoordinates={setFoodCoordinates}
                            score={score} setScore={setScore}

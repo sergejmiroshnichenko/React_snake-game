@@ -12,12 +12,13 @@
 }
 
 
-span {
+.score {
   font-size: 30px;
   color: red;
   font-weight: 800;
   -webkit-text-stroke: 1px white;
-  font-family: Comic Sans MS, Comic Sans sans-serif;
+  font-family: "Arial Black", sans-serif;
+  font-style: normal;
 }
 
 .START{
@@ -35,4 +36,10 @@ img{
   margin: 0 5px;
   width: 21px;
   height: 21px;
+}
+
+span{
+  font-size: 19px;
+  padding: 0 5px;
+  font-style: italic;
 }
